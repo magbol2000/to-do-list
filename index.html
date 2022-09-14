@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To do list</title>
+  </head>
+  <body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <div id="to-do-list">
+    <h1>{{ header || "Welcome" }}</h1>
+      <ul>
+          <li v-for="(item,index) in items" :key="index">{{item.label}}. State: {{item.state}}</li>
+      </ul>
+  </div>
+  <script>
+      const { createApp } = Vue
+
+      createApp({
+          data() {
+              return {
+                  header: 'To do list',
+                  items: [
+                      {state: "ready", label: "Fix some bugs"},
+                      {state: "in process", label: "Homework"},
+                      {state: "wait", label: "Study English"},
+                  ]
+              }
+          }
+      }).mount('#to-do-list')
+  </script>
+  </body>
+</html>
